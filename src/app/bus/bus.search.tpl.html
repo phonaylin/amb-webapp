@@ -1,0 +1,74 @@
+
+<div class="container" ng-controller="BusSearchCtrl">
+	<div class="row">
+		<!-- CONTENT COLUMN -->
+		<!-- Route detail -->
+		<div class="col-md-9">
+
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="title-v2">Search</h3>
+				</div>
+			</div>
+
+			<div class="row">
+	        <div class="col-md-6">
+						<p>From :</p>
+					  <ui-select ng-model="fromCity.selected" theme="selectize"  style="width: 300px;">
+					    <ui-select-match placeholder="Please choose a city...">{{$select.selected.name}}</ui-select-match>
+					    <ui-select-choices repeat="city in cities | filter: $select.search | filter: filterToCity">
+					      <span ng-bind-html="city.name | highlight: $select.search"></span>
+					    </ui-select-choices>
+					  </ui-select>
+
+
+						<select
+			       ng-model="selectedParentItem"
+			       ng-options="city.name for city in cities " >
+			     </select>
+
+						<select
+			       ng-model="selectedChildItem"
+			       ng-options="city.name for city in cities">
+			     </select>
+						<!-- <p class="input-group">
+						  From :
+							<select ng-options="k as v for (k, v) in cities" ng-model="fromId"></select>
+						</p> -->
+	        </div>
+	        <div class="col-md-6">
+						<p>To : </p>
+					  <ui-select ng-model="toCity.selected" theme="selectize" style="width: 300px;">
+					    <ui-select-match placeholder="Please choose a city...">{{$select.selected.name}}</ui-select-match>
+					    <ui-select-choices repeat="city in cities | filter: $select.search">
+					      <span ng-bind-html="city.name | highlight: $select.search"></span>
+					    </ui-select-choices>
+					  </ui-select>
+						<!-- <p class="input-group">
+							To :
+							<select ng-options="k as v for (k, v) in cities" ng-model="toId"></select>
+						</p> -->
+	        </div>
+					<!-- <div class="col-md-6">
+						<p class="input-group">
+							Date of travel :
+              <input type="text" class="form-control" datepicker-popup="{{dateFormat}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+	        </div> -->
+	    </div>
+
+			<div class="row-code">
+				<a ui-sref=".offers({fromCityId : fromCity.selected.code, toCityId : toCity.selected.code})" ng-click="searchOffers()" class="btn btn-primary">Search</a>
+			</div>
+
+		</div>
+	</div>
+	<hr>
+
+	<div class="container" ui-view="offers"></div>
+	<div class="container" ui-view="order"></div>
+
+</div>

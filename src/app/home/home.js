@@ -12,9 +12,10 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'ngBoilerplate.home', [
+angular.module( 'ambWebApp.home', [
   'ui.router',
-  'plusOne'
+  'plusOne',
+  'ambWebApp.bus'
 ])
 
 /**
@@ -41,5 +42,10 @@ angular.module( 'ngBoilerplate.home', [
 .controller( 'HomeCtrl', function HomeController( $scope ) {
 })
 
-;
+.directive('busSearch', function() {
+  return {
+    templateUrl: 'bus/bus.search.tpl.html'
+  };
+})
 
+;

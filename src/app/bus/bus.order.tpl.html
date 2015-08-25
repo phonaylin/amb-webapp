@@ -1,0 +1,72 @@
+<!-- SECTION -->
+<!--===============================================================-->
+<div class="section-heading-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 class="heading-page text-center-xs">
+					{{offer.route.originPOI.title}} - {{offer.route.destPOI.title}}</h1>
+					<h2 class="heading-page text-center-xs">
+						< {{travelDt | date : 'shortDate'}} > </h2>
+			</div>
+		</div>
+
+		<!-- Passenger details -->
+		<div class="section section-xs section-bottom">
+      <div class="container">
+        <div class="row mb">
+          <div class="col-md-6">
+            <div class="wrapper-form-box">
+							<div ng-repeat="passenger in myOrder.passengers" class="wrapper-form-box">
+								<h3 class="title-sm">Passenger {{$index+1}} Details</h3>
+								<button type="button" ng-click="removePassenger(passenger)" class="btn btn-primary">x</button>
+								<form>
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-user"></i>
+											</span>
+											<input type="text" class="form-control" ng-model="passenger.firstName" placeholder="First Name">
+											<input type="text" class="form-control" ng-model="passenger.lastName" placeholder="Last Name">
+										</div>
+									</div>
+									<div class="form-group">
+	                  <div class="input-group">
+	                    <span class="input-group-addon"><i class="fa fa-envelope"></i>
+	                    </span>
+	                    <input type="email" class="form-control" ng-model="passenger.emailAddress" placeholder="Email">
+	                  </div>
+	                </div>
+	                <div class="form-group">
+	                  <div class="input-group">
+	                    <span class="input-group-addon"><i class="fa fa-envelope"></i>
+	                    </span>
+	                    <input type="email" class="form-control" placeholder="Confirm Email">
+	                  </div>
+	                </div>
+									<div class="form-group">
+	                  <div class="input-group">
+	                    <span class="input-group-addon"><i class="fa fa-phone"></i>
+	                    </span>
+	                    <input type="address" class="form-control" ng-model="passenger.contactNumber" placeholder="Phone Number">
+	                  </div>
+	                </div>
+								</form>
+							</div>
+							<div class="row-code">
+								<button type="button" ng-click="addPassenger()" class="btn btn-primary">Add Passenger</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end of passenger details -->
+		<div>
+			<div class="row-code">
+				<button type="button" ng-click="saveOrder()" class="btn btn-primary">Checkout</a>
+			</div>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+		</div>
+	</div>
+</div>
