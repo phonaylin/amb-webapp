@@ -1,0 +1,18 @@
+
+<div class="row">
+
+	<div>
+		<div class="col-xs-2">
+			<!-- <button type="button" class="btn btn-link" ng-click="showSearchBar=!showSearchBar">Modify</button> -->
+			<i class="fa fa-search" ng-click="showSearchBar=!showSearchBar">Modify Search</i>
+			<!-- <span class="glyphicon glyphicon-search" ng-click="showSearchBar=!showSearchBar" aria-hidden="true"></span> -->
+		</div>
+		<div class="col-xs-10">
+			<h1 class="text-center-md">
+				{{selectedFromCity.name}} <i class="fa fa-arrow-right"></i> {{selectedToCity.name}}</h1>
+		</div>
+	</div>
+	<div ng-show="showSearchBar">
+		<div class="well well-lg"><bus-search/></div>
+	</div>
+</div>

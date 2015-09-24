@@ -1,7 +1,14 @@
-<div class="row">
+<!-- <div class="row"> -->
 	<!-- CONTENT COLUMN -->
 	<!-- Route detail -->
-	<div class="col-md-9">
+	<!-- <div class="col-md-9">
+
+			<div class="page-header">
+				<h1 class="text-center-md">
+					{{offerFromCity.name}} <i class="fa fa-arrow-right"></i> {{offerToCity.name}}</h1>
+			</div>
+		</div> -->
+		<bus-header></bus-header>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -9,18 +16,18 @@
 			</div>
 		</div>
 
-		<div class="row-code">
-			<div class="row row-tabs" role="tabpanel">
-				<div class="col-md-12">
-					<div class="tabs-top">
-						<div class="tab-content">
+		<!-- <div class="row-code"> -->
+			<!-- <div class="row row-tabs" role="tabpanel"> -->
+				<!-- <div class="col-md-12"> -->
+					<!-- <div class="tabs-top"> -->
+						<!-- <div class="tab-content"> -->
 							<table class="table">
 								<thead>
 									<tr>
 										<th>Departure Time</th>
 										<th>Bus Type</th>
 										<th>Price (USD)</th>
-										<th></th>
+										<th>Quantity</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -29,18 +36,32 @@
 										<td>{{offer.busType}}</td>
 										<td>{{offer.fare}}</td>
 										<td>
-											<div class="col-sm-offset-2 col-sm-10">
-												<a ui-sref="^.order" ng-click="chooseOffer(offer)" class="btn btn-primary">Order</a>
-											</div>
+											<select name="selectedQuantity" ng-model="offer.quantity">
+												<option value="">---Please select---</option>
+									      <option value="1">1</option>
+									      <option value="2">2</option>
+												<option value="3">3</option>
+									      <option value="4">4</option>
+												<option value="5">5</option>
+									      <option value="6">6</option>
+												<option value="7">7</option>
+									      <option value="8">8</option>
+												<option value="9">9</option>
+									      <option value="10">10</option>
+									    </select>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-						</div>
 
-					</div>
-				</div>
-			</div>
-		</div>
+							<!-- <div class="col-sm-offset-2 col-sm-10"> -->
+								<a ui-sref="bus.order" ng-click="createOrder()" class="btn btn-primary">Book Tickets</a>
+							<!-- </div> -->
+						<!-- </div> -->
+
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
 	</div>
-</div>
+<!-- </div> -->

@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- NLA added CSS -->
     <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css"> -->
@@ -27,6 +28,8 @@
 
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- <link rel="stylesheet" type="text/css" href="assets/custom.css"/> -->
 
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
@@ -48,9 +51,8 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-brand">
-            ngbp
+            AMB Travels & Tour
             <small>
-              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
                 v<%= version %>
               </a>
             </small>
@@ -65,15 +67,15 @@
               </a>
             </li>
             <li ui-sref-active="active">
-              <a href ui-sref="about">
-                <i class="fa fa-info-circle"></i>
-                What is it?
+              <a href ui-sref="bus.search">
+                <i class="fa fa-bus"></i>
+                Bus Tickets
               </a>
             </li>
             <li ui-sref-active="active">
-              <a href ui-sref="bus">
-                <i class="fa fa-info-circle"></i>
-                Bus Tickets
+              <a href ui-sref="about">
+                <i class="fa fa-plane"></i>
+                Flight Tickets
               </a>
             </li>
             <li>

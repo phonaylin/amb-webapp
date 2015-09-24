@@ -1,3 +1,17 @@
+<!-- <div> -->
+  <!-- <div style="height: 305px"> -->
+    <!-- <carousel interval="myinterval" no-wrap="nowrapslides"> -->
+      <!-- <slide ng-repeat="slide in slides" active="slide.active"> -->
+        <!-- <img ng-src="{{slide.image}}" style="margin:auto;"> -->
+        <!-- <div class="carousel-caption"> -->
+          <!-- <h4>slide {{$index}}</h4> -->
+          <!-- <p>{{slide.text}}</p> -->
+        <!-- </div> -->
+      <!-- </slide> -->
+    <!-- </carousel> -->
+  <!-- </div> -->
+<!-- </div> -->
+
 <div class="jumbotron">
   <h1>Travelling in Myanmar made easy</h1>
 
@@ -6,14 +20,15 @@
     here.
   </p>
 
-  <div>
+  <div class="row">
+    <div class="col-sm-8">
     <tabset>
       <tab>
         <tab-heading>
           <i class="fa fa-bus"></i> Bus
         </tab-heading>
+        <bus-search></bus-search>
 
-        <busSearch>
 
       </tab>
       <tab>
@@ -25,47 +40,20 @@
       <tab heading="Hotel" disable="true">Static content</tab>
     </tabset>
   </div>
-
-  <ul class="list-inline social-buttons">
-    <li>
-      <iframe
-        src="http://ghbtns.com/github-btn.html?user=ngbp&amp;repo=ngbp&amp;type=watch&amp;count=true"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="0"
-        width="110"
-        height="20">
-      </iframe>
-    </li>
-    <li>
-      <iframe
-        src="http://ghbtns.com/github-btn.html?user=ngbp&amp;repo=ngbp&amp;type=fork&amp;count=true"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="0"
-        width="95"
-        height="20">
-      </iframe>
-    </li>
-    <li>
-       <iframe allowtransparency="true" frameborder="0" scrolling="no"
-        src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fbit.ly%2FngBoilerplate&counturl=http%3A%2F%2Fngbp.github.com%2Fngbp&text=Check%20out%20%23ngbp%20-%20an%20awesome%20kickstarter%20for%20web%20projects%20%7C&hashtags=angularjs&via=joshdmiller&related=joshdmiller"
-        style="width:130px; height:20px;"></iframe>
-    </li>
-    <li plus-one></li>
-  </ul>
-
-  <div class="btn-group">
-    <a href="https://github.com/ngbp/ngbp#readme" class="btn btn-large btn-default">
-      <i class="fa fa-book"></i>
-      Read the Docs
-    </a>
-    <a href="https://github.com/ngbp/ngbp" class="btn btn-large btn-success">
-      <i class="fa fa-download"></i>
-      Download
-    </a>
   </div>
 
+</div>
+
+<div class="about">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4><i class="fa fa-thumbs-up"></i> About AMB Myanmar Travels &amp Tours</h4>
+      <p>Asian Myanma Beauty Travel is a small team of travel professional based in Yangon;
+        Myanmar owned and operated by 100% nationals comprising different ethnic backgrounds. We are now able to recruit highly trained staffs & Myanmar tourism specialists, enabling to handle any type of travel deals from simple classical journeys to the great adventures and the luxury travels. You don’t need to be wasted your precious time finding ways to get around or looking for the right hotel of your taste and the budget, or struggle to understand the history, religion, local customs, and lifestyle of the people. We have a Burmese-English-French management and we will help you to organize your journey in Myanmar (Burma). You may browse our suggested itineraries to get an idea of how to better organize your dream journey or please use our itinerary planner form by tailoring your needs and wants with your personal travel consultant. We will build with you a program that fits your wishes. It will be tailor made trip for you.
+        Through our website, read the information about Myanmar, fill up the demand form for your tailor made trip. Our Operation team will reply you between 24 hours (except Sunday). If you may need any further information, please do not hesitate to contact us at operation@ambmyanmartravels.com or sales@ambmyanmartravels.com.
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="marketing">

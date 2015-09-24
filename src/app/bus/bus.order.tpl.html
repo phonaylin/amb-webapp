@@ -2,66 +2,135 @@
 <!--===============================================================-->
 <div class="section-heading-page">
 	<div class="container">
+		<!-- <div class="row">
+			<div class="page-header">
+				<h1 class="text-center-md">
+					{{fromCity.name}} <i class="fa fa-arrow-right"></i>  {{toCity.name}}</h1>
+			</div>
+		</div> -->
+
+		<bus-header></bus-header>
+
+		<!-- booking summry -->
 		<div class="row">
-			<div class="col-sm-6">
-				<h1 class="heading-page text-center-xs">
-					{{offer.route.originPOI.title}} - {{offer.route.destPOI.title}}</h1>
-					<h2 class="heading-page text-center-xs">
-						< {{travelDt | date : 'shortDate'}} > </h2>
+			<div class="container">
+				<h3 class="title-sm">Booking Summary</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Unit Price</th>
+							<th>Quantity</th>
+							<th>Total Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="order in myBooking.orders">
+							<td>{{order.offer.busRoute.originPOI.description}} <i class="fa fa-arrow-right"></i>
+							{{order.offer.busRoute.destPOI.description}} - {{order.offer.departureTime | date : 'shortTime'}} | {{order.offer.busType}}</td>
+							<td>{{order.offer.fare}}</td>
+							<td>{{order.offer.quantity}}</td>
+							<td>{{order.offer.quantity * order.offer.fare}}</td>
+
+						</tr>
+						<tr>
+							<td/>
+							<td/>
+							<td>Sub Total</td>
+							<td>{{getTotal()}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- end of booking summary-->
+
+		<!-- CONTACT DETAILS -->
+		<div class="row">
+			<div class="container">
+				<h3 class="title-sm">Contact Details (E-ticket will be shared to below email)</h3>
+				<form class="form-horizontal" role="form">
+		      <div class="form-group">
+		        <label for="inputContactFirstName" class="col-sm-2 control-label">First Name</label>
+		        <div class="col-sm-4">
+		          <input class="form-control" id="inputContactFirstName" ng-model="myBooking.buyer.firstName"  placeholder="First Name">
+		        </div>
+		      </div>
+					<div class="form-group">
+		        <label for="inputContactLastName" class="col-sm-2 control-label">Last Name</label>
+		        <div class="col-sm-4">
+		          <input class="form-control" id="inputContactLastName" ng-model="myBooking.buyer.lastName"  placeholder="Last Name">
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label for="inputContactEmail" class="col-sm-2 control-label">Email</label>
+		        <div class="col-sm-4">
+		          <input class="form-control" id="inputContactEmail" ng-model="myBooking.buyer.emailAddress" placeholder="Email">
+		        </div>
+		      </div>
+		    </form>
 			</div>
 		</div>
 
-		<!-- Passenger details -->
-		<div class="section section-xs section-bottom">
-      <div class="container">
-        <div class="row mb">
-          <div class="col-md-6">
-            <div class="wrapper-form-box">
-							<div ng-repeat="passenger in myOrder.passengers" class="wrapper-form-box">
-								<h3 class="title-sm">Passenger {{$index+1}} Details</h3>
-								<button type="button" ng-click="removePassenger(passenger)" class="btn btn-primary">x</button>
-								<form>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-user"></i>
-											</span>
-											<input type="text" class="form-control" ng-model="passenger.firstName" placeholder="First Name">
-											<input type="text" class="form-control" ng-model="passenger.lastName" placeholder="Last Name">
-										</div>
-									</div>
-									<div class="form-group">
-	                  <div class="input-group">
-	                    <span class="input-group-addon"><i class="fa fa-envelope"></i>
-	                    </span>
-	                    <input type="email" class="form-control" ng-model="passenger.emailAddress" placeholder="Email">
-	                  </div>
-	                </div>
-	                <div class="form-group">
-	                  <div class="input-group">
-	                    <span class="input-group-addon"><i class="fa fa-envelope"></i>
-	                    </span>
-	                    <input type="email" class="form-control" placeholder="Confirm Email">
-	                  </div>
-	                </div>
-									<div class="form-group">
-	                  <div class="input-group">
-	                    <span class="input-group-addon"><i class="fa fa-phone"></i>
-	                    </span>
-	                    <input type="address" class="form-control" ng-model="passenger.contactNumber" placeholder="Phone Number">
-	                  </div>
-	                </div>
-								</form>
+		<!-- passenger details -->
+		<div class="row">
+			<div class="container">
+				<form class="form-horizontal" role="form">
+				<div ng-repeat="order in myBooking.orders" class="wrapper-form-box bordered">
+					<h3 class="title-sm">{{order.offer.busRoute.originPOI.description}} <i class="fa fa-arrow-right"></i>
+					{{order.offer.busRoute.destPOI.description}} - {{order.offer.departureTime | date : 'shortTime'}} | {{order.offer.busType}}
+				  	</h3>
+						<hr><small>Please complete passenger details</small>
+					<div ng-repeat="ticket in order.tickets" class="wrapper-form-box">
+						<h3 class="title-sm"><span class="label label-primary"><i class="fa fa-ticket"></i>Ticket {{$index+1}}</span></h3>
+						<div class="form-group">
+							<label for="input{{$index+1}}TravelDate" class="col-sm-2 control-label">Travel Date</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input{{$index+1}}TravelDate" ng-model="ticket.plannedTravelDate" placeholder="dd-mm-yyyy">
 							</div>
-							<div class="row-code">
-								<button type="button" ng-click="addPassenger()" class="btn btn-primary">Add Passenger</a>
 
+							<!-- <div class="col-md-6">
+								<p class="input-group">
+									Date of travel :
+		              <input type="text" class="form-control" datepicker-popup="{{dateFormat}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+		              <span class="input-group-btn">
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		              </span>
+		            </p>
+			        </div> -->
+
+						</div>
+						<div class="form-group">
+							<label for="input{{$index+1}}FirstName" class="col-sm-2 control-label">First Name</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input{{$index+1}}FirstName" ng-model="ticket.passenger.firstName" placeholder="First Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="input{{$index+1}}LastName" class="col-sm-2 control-label">Last Name</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input{{$index+1}}LastName" ng-model="ticket.passenger.lastName" placeholder="Last Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="input{{$index+1}}Email" class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input{{$index+1}}Email" ng-model="ticket.passenger.emailAddress" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="input{{$index+1}}ContactNumber" class="col-sm-2 control-label">Contact Number</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input{{$index+1}}ContactNumber" ng-model="ticket.passenger.contactNumber" placeholder="Contact Number">
 							</div>
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 		<!-- end of passenger details -->
+
 		<div>
 			<div class="row-code">
 				<button type="button" ng-click="saveOrder()" class="btn btn-primary">Checkout</a>
